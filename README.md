@@ -51,6 +51,23 @@ You'll receive a response like this:
 }
 ```
 
+## Function Calling
+
+```shell
+curl --request POST \
+  --url 'http://localhost:8080/function' \
+  --header 'Content-Type: application/json' \
+  --data '{
+     "question": "Who is the best team?",
+     "sport": "college football"
+    }'
+```
+
+You'll receive a response like this:
+```json
+The best team in college football is Iowa.
+```
+
 ## Tech Stack
 
 * Spring Boot 3.3
