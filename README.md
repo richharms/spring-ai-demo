@@ -9,14 +9,17 @@ This repository was used as reference during a talk for the [Central Iowa Java U
 * Create an [OpenAI](https://openai.com/) account and [get an API key](https://platform.openai.com/api-keys).
 * Set up [billing settings](https://platform.openai.com/account/billing/overview) for your account with a small spending limit.
 * Create an environment variable named `SPRING_AI_OPENAI_API_KEY` that is set to your OpenAI API key, or populate the key value in ['application.yaml`](/src/main/resources/application.yaml).
+* An API key for live sports scores may be created at [API-SPORTS](https://api-sports.io) and added to application.yaml.
 * Install Java 21 or later.
 * Run `./gradlew bootRun` to start the application.
 
-## Populating Vector Storage
+## RAG Example
+
+### Populating Vector Storage
 * Once the application is running, you can populate the vector storage by running `curl -X POST http://localhost:8080/stats/embeddings`.
 * This will create embeddings for all the data in `src/main/resources/documents` and store them in the vector storage file called `vector-storage.json` in your project's `target/classes/vector-storage` directory, so you only have to generate them once.
 
-## Using the API
+### Using the API
 * Once the vector storage is populated, you can use the API to get predictions from OpenAi using the embeddings in the vector storage.
 * Run the following to get a response about the number of passing touchdowns.
 
@@ -53,6 +56,8 @@ You'll receive a response like this:
 
 ## Function Calling
 
+### Best Team Example
+
 ```shell
 curl --request POST \
   --url 'http://localhost:8080/function' \
@@ -66,6 +71,23 @@ curl --request POST \
 You'll receive a response like this:
 ```
 The best team in college football is Iowa.
+```
+
+### Live Score Example
+
+```shell
+curl --request POST \
+  --url 'http://localhost:8080/function' \
+  --header 'Content-Type: application/json' \
+  --data '{
+     "question": "What was the score of the last Iowa game?",
+     "sport": "college football"
+    }'
+```
+
+You'll receive a response like this:
+```
+The last game for Iowa was against UCLA, and the score was Iowa 17, UCLA 20.
 ```
 
 ## Tech Stack
