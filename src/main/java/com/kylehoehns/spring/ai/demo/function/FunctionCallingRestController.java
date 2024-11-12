@@ -1,6 +1,8 @@
 package com.kylehoehns.spring.ai.demo.function;
 
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.model.ChatModel;
@@ -11,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.Set;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/function")
+@Slf4j
 public class FunctionCallingRestController {
 
     private final ChatModel chatModel;
@@ -36,7 +39,15 @@ public class FunctionCallingRestController {
                 OpenAiChatOptions.builder().withFunctions(Set.of("bestTeam", "liveScore")).build()
         );
 
+        log.info("\nPrompt\n {}", prompt);
+
         var response = chatModel.call(prompt);
+
+        log.info("Total Tokens {}", response.getMetadata().getUsage().getTotalTokens());
+
+        var chatResponse = response.getResult().getOutput().getContent();
+        log.info("\nResponse\n {}", chatResponse);
+
         return response.getResult().getOutput().getContent();
     }
 
