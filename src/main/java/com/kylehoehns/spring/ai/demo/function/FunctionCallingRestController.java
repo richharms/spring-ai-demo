@@ -36,7 +36,7 @@ public class FunctionCallingRestController {
         SystemMessage systemMessage = new SystemMessage(systemMessageText);
         Prompt prompt = new Prompt(
                 List.of(userMessage, systemMessage),
-                OpenAiChatOptions.builder().withFunctions(Set.of("bestTeam", "liveScore")).build()
+                OpenAiChatOptions.builder().withFunctions(Set.of("bestTeam", "worstTeam", "liveScore")).build()
         );
 
         log.info("\nPrompt\n {}", prompt);

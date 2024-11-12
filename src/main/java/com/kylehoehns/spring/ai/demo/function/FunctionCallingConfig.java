@@ -29,6 +29,12 @@ public class FunctionCallingConfig {
     }
 
     @Bean
+    @Description("Get the worst team in college football")
+    public Function<WorstTeamFunction.Request, WorstTeamFunction.Response> worstTeam() {
+        return new WorstTeamFunction();
+    }
+
+    @Bean
     @Description("Get the live score of a current game")
     public Function<LiveScoreFunction.ScoreRequest, LiveScoreFunction.ScoreResponse> liveScore(RestClient restClient) {
         return new LiveScoreFunction(restClient);

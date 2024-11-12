@@ -5,14 +5,14 @@ import java.util.function.Function;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class BestTeamFunction implements Function<BestTeamFunction.Request, BestTeamFunction.Response> {
+public class WorstTeamFunction implements Function<WorstTeamFunction.Request, WorstTeamFunction.Response> {
 
     @Override
     public Response apply(Request request) {
 
-        log.info("Best Team Request: {}", request);
+        log.info("Worst Team Request: {}", request);
 
-        return new Response("University of Iowa");
+        return new Response("Iowa State");
     }
 
     public record Request(String question) {}
