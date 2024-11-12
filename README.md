@@ -64,7 +64,7 @@ curl --request POST \
 ```
 
 You'll receive a response like this:
-```json
+```
 The best team in college football is Iowa.
 ```
 
