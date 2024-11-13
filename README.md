@@ -90,6 +90,23 @@ You'll receive a response like this:
 The last game for Iowa was against UCLA, and the score was Iowa 17, UCLA 20.
 ```
 
+### Best and Worst Teams and Live Scores Example
+
+```shell
+curl --request POST \
+  --url 'http://localhost:8080/function' \
+  --header 'Content-Type: application/json' \
+  --data '{
+     "question": "What was the score of the last game played by the best team and the worst team?",
+     "sport": "college football"
+    }'
+```
+
+You'll receive a response like this:
+```
+The last game played by the best team, Iowa, ended with a score of Iowa 17, UCLA 20. The worst team, Michigan, played against Indiana and the score was Michigan 15, Indiana 20.
+```
+
 ## Tech Stack
 
 * Spring Boot 3.3
