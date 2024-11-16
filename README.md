@@ -63,8 +63,7 @@ curl --request POST \
   --url 'http://localhost:8080/function' \
   --header 'Content-Type: application/json' \
   --data '{
-     "question": "Who is the best team?",
-     "sport": "college football"
+     "question": "Who is the best team?"
     }'
 ```
 
@@ -80,8 +79,7 @@ curl --request POST \
   --url 'http://localhost:8080/function' \
   --header 'Content-Type: application/json' \
   --data '{
-     "question": "What was the score of the last Iowa game?",
-     "sport": "college football"
+     "question": "What was the score of the last Iowa game?"
     }'
 ```
 
@@ -97,8 +95,7 @@ curl --request POST \
   --url 'http://localhost:8080/function' \
   --header 'Content-Type: application/json' \
   --data '{
-     "question": "What was the score of the last game played by the best team and the worst team?",
-     "sport": "college football"
+     "question": "What was the score of the last game played by the best team and the worst team?"
     }'
 ```
 
