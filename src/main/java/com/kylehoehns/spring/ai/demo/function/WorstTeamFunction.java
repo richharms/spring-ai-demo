@@ -12,7 +12,11 @@ public class WorstTeamFunction implements Function<WorstTeamFunction.Request, Wo
 
         log.info("Worst Team Request: {}", request);
 
-        return new Response("Michigan");
+        var response = new Response("Michigan");
+
+        log.info("Worst Team Response: {}", response);
+
+        return response;
     }
 
     public record Request(String question) {}

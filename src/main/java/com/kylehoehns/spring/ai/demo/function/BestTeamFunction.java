@@ -12,7 +12,11 @@ public class BestTeamFunction implements Function<BestTeamFunction.Request, Best
 
         log.info("Best Team Request: {}", request);
 
-        return new Response("Iowa");
+        var response = new Response("Iowa");
+
+        log.info("Best Team Response: {}", response);
+
+        return response;
     }
 
     public record Request(String question) {}
